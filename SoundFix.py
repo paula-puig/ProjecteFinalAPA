@@ -96,6 +96,11 @@ class LowPassFilter(AudioProcessor):
     def apply_lowpass_filter(self, output_file, cutoff_frequency):
         filtered_audio = self.audio.low_pass_filter(cutoff_frequency)
         filtered_audio.export(output_file, format='wav')
+
+class HighPassFilter(AudioProcessor):
+    def apply_highpass_filter(self, output_file, cutoff_frequency):
+        filtered_audio = self.audio.high_pass_filter(cutoff_frequency)
+        filtered_audio.export(output_file, format="wav")
     
 # Ejemplo de uso de las clases y la interfaz
 input_file = "Segment.wav"
@@ -130,6 +135,10 @@ low_effect.apply_low_effect(output_file_low)
 lowPass_effect = LowPassFilter(input_file)
 output_file_lowPass = "Low.wav"
 lowPass_effect.apply_lowpass_filter(output_file_lowPass)
+
+highPass_effect = HighPassFilter(input_file)
+output_file_highPass = "HighPass.wav"
+highPass_effect.apply_lowpass_filter(output_file_highPass)
 
 # Reproducir el audio original
 #audio_processor.play_audio()
